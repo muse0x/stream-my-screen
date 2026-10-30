@@ -13,8 +13,22 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        SetWindowIcon();
         Loaded += OnLoaded;
         Closing += OnClosing;
+    }
+
+    private void SetWindowIcon()
+    {
+        try
+        {
+            var iconFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "icon.png");
+            if (File.Exists(iconFile))
+            {
+                Icon = new System.Windows.Media.Imaging.BitmapImage(new Uri(iconFile));
+            }
+        }
+        catch { }
     }
 
     private async void OnLoaded(object sender, RoutedEventArgs e)

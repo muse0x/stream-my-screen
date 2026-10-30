@@ -5,10 +5,13 @@ cd /d "%~dp0"
 if "%1"=="installer" (
     echo building release...
     dotnet publish src\StreamMyScreen.App -c Release -o publish
-    set "ISCC=%LOCALAPPDATA%\Programs\Inno Setup 6\ISCC.exe"
-    if not exist "%ISCC%" set "ISCC=C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
-    if not exist "%ISCC%" set "ISCC=C:\Program Files\Inno Setup 6\ISCC.exe"
-    "%ISCC%" installer\StreamMyScreen.iss
+    if exist "%LOCALAPPDATA%\Programs\Inno Setup 6\ISCC.exe" (
+        "%LOCALAPPDATA%\Programs\Inno Setup 6\ISCC.exe" installer\StreamMyScreen.iss
+    ) else if exist "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" (
+        "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer\StreamMyScreen.iss
+    ) else (
+        "C:\Program Files\Inno Setup 6\ISCC.exe" installer\StreamMyScreen.iss
+    )
     echo [done] installer created in dist\
     exit /b 0
 )
