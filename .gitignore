@@ -1,0 +1,38 @@
+# Build artifacts
+bin/
+obj/
+publish/
+dist/
+
+# Binaries & Portable Engines
+engine/
+*.zip
+
+# Visual Studio / VS Code
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# WebView2 & Local Caches
+StreamMyScreen_WebView2/
+EBWebView/
+
+# Logs & Temporary files
+*.log
+app_log.txt
+error_log.txt
+
+# Certificates & Keys
+*.pfx
+*.cer
+*.key
+*.crt
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
+

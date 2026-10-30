@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Stream My Screen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="mobile-layout">
+    <header class="top-bar">
+      <div class="brand-row" style="display:flex;align-items:center;gap:8px;">
+        <img src="logo.png" alt="SMSC Logo" style="height:22px;width:auto;">
+        <span class="app-name">Stream My Screen</span>
+      </div>
+      <div class="status-chip" id="statusPill">
+        <span class="status-dot"></span>
+        <span id="statusText">Connecting...</span>
+      </div>
+    </header>
+
+    <main class="main-body">
+      <!-- Ready State -->
+      <section id="readySection" class="action-card">
+        <div class="card-intro">
+          <h2>Screen Mirroring</h2>
+          <p>Stream directly to PC over Wi-Fi</p>
+        </div>
+
+        <div class="config-group">
+          <div class="config-row">
+            <span>Quality</span>
+            <select id="qualitySelect" class="select-input">
+              <option value="1080" selected>1080p • 60 FPS</option>
+              <option value="720">720p • 60 FPS</option>
+            </select>
+          </div>
+          <div class="config-row">
+            <span>Audio</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="audioToggle" checked>
+              <span class="toggle-track"></span>
+            </label>
+          </div>
+        </div>
+
+        <button id="startBtn" class="btn-primary">
+          Start Mirroring
+        </button>
+      </section>
+
+      <!-- Active Streaming State -->
+      <section id="streamingSection" class="action-card hidden">
+        <div class="live-pill">
+          <span class="live-badge-dot"></span>
+          <span>LIVE</span>
+        </div>
+
+        <div class="timer" id="timerDisplay">00:00:00</div>
+        <p class="streaming-note">Screen mirroring active to PC</p>
+
+        <button id="stopBtn" class="btn-danger">
+          Stop Mirroring
+        </button>
+      </section>
+    </main>
+  </div>
+
+  <script src="sender.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>stream-my-screen</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app-layout">
+    <!-- Header -->
+    <header class="top-nav">
+      <div class="brand">
+        <img src="logo.png" alt="SMSC Logo" class="nav-brand-logo">
+        <span class="nav-title">stream-my-screen</span>
+      </div>
+      <div class="nav-status">
+        <span class="status-indicator"></span>
+        <span id="ipDisplay">ready</span>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main class="content-body">
+      <!-- Idle State -->
+      <section id="idleScreen" class="single-card-container">
+        <div class="card">
+          <div class="card-title-row">
+            <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.61-.75 1.04-1.8 0.92-2.85-.9.04-2 .6-2.65 1.35-.58.67-1.09 1.74-.96 2.77 1 .08 2.08-.52 2.69-1.27z" />
+            </svg>
+            <h2>AirPlay Mirroring</h2>
+            <span class="badge">60 FPS</span>
+          </div>
+
+          <div class="instructions">
+            <div class="step">
+              <span class="num">1</span>
+              <span>Open <strong>Control Center</strong> on iPhone or iPad</span>
+            </div>
+            <div class="step">
+              <span class="num">2</span>
+              <span>Tap <strong>Screen Mirroring</strong></span>
+            </div>
+            <div class="step">
+              <span class="num">3</span>
+              <span>Select <code id="airPlayNameDisplay">StreamMyScreen - PC</code></span>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <span class="dot-online"></span>
+            <span>Direct3D11 receiver listening on local Wi-Fi</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Active Stream State -->
+      <section id="streamScreen" class="stream-viewport hidden">
+        <div class="video-wrapper" id="videoContainer">
+          <video id="remoteVideo" autoplay playsinline></video>
+
+          <!-- Minimal Toolbar -->
+          <div class="toolbar" id="controlsBar">
+            <div class="toolbar-group">
+              <button id="rotateBtn" class="tool-btn" title="Rotate 90°">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
+                </svg>
+              </button>
+              <button id="screenshotBtn" class="tool-btn" title="Screenshot">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                  <circle cx="12" cy="13" r="4"></circle>
+                </svg>
+              </button>
+              <button id="fullscreenBtn" class="tool-btn" title="Fullscreen (F11)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <path
+                    d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
+                  </path>
+                </svg>
+              </button>
+              <button id="muteBtn" class="tool-btn" title="Mute / Unmute">
+                <svg id="volumeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                </svg>
+              </button>
+            </div>
+
+            <div class="video-meta">
+              <span id="resBadge">1080p</span> • <span id="fpsBadge">60 FPS</span>
+            </div>
+
+            <button id="disconnectBtn" class="tool-btn danger" title="Disconnect">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
