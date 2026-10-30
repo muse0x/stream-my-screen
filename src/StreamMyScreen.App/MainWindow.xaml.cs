@@ -8,7 +8,7 @@ namespace StreamMyScreen.App;
 public partial class MainWindow : Window
 {
     private readonly WebServerService _webServer = new();
-    private readonly AirPlayService _airPlay = new("StreamMyScreen - PC");
+    private readonly AirPlayService _airPlay = new("StreamMyScreen");
 
     public MainWindow()
     {

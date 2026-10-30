@@ -35,7 +35,7 @@ dotnet run --project src/StreamMyScreen.App
 
 1. make sure your iphone/ipad and pc are on the same wi-fi network.
 2. swipe down **Control Center** -> tap **Screen Mirroring**.
-3. select `StreamMyScreen - PC`.
+3. select `StreamMyScreen`.
 4. done. instant 60 fps screen mirroring on your pc.
 
 ---
