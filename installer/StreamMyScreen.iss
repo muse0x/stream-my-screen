@@ -1,5 +1,5 @@
-#define MyAppName "Stream My Screen"
-#define MyAppVersion "1.0.0"
+﻿#define MyAppName "Stream My Screen"
+#define MyAppVersion "1.0.3"
 #define MyAppPublisher "muse0x"
 #define MyAppURL "https://github.com/muse0x"
 #define MyAppExeName "StreamMyScreen.App.exe"
@@ -16,7 +16,7 @@ DefaultDirName={autopf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
 OutputDir=..\dist
-OutputBaseFilename=StreamMyScreen-Setup-v1.0.0
+OutputBaseFilename=StreamMyScreen-Setup-v1.0.3
 SetupIconFile=..\src\StreamMyScreen.App\icon.ico
 UninstallDisplayIcon={app}\{#MyAppExeName}
 Compression=lzma2/ultra64
