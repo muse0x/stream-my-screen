@@ -22,6 +22,11 @@ if not exist "engine\uxplay\uxplay-windows.exe" (
     powershell -NoProfile -Command "curl.exe -L 'https://github.com/muse0x/uxplay-windows/releases/download/v2.0.0.1736/uxplay-windows.zip' -o 'uxplay.zip'; Expand-Archive 'uxplay.zip' -DestinationPath 'engine/uxplay' -Force; Remove-Item 'uxplay.zip'"
 )
 
+if exist "engine\uxplay\D3Dcompiler_47.dll" (
+    copy /Y "%SystemRoot%\System32\d3dcompiler_47.dll" "engine\uxplay\D3Dcompiler_47.dll" >nul 2>&1
+    if errorlevel 1 del /q "engine\uxplay\D3Dcompiler_47.dll" >nul 2>&1
+)
+
 if exist "publish\StreamMyScreen.App.exe" (
     start "" "publish\StreamMyScreen.App.exe"
 ) else (

@@ -59,6 +59,7 @@ public class AirPlayService
         try
         {
             var workingDir = Path.GetDirectoryName(_enginePath)!;
+            PrepareD3DCompiler(workingDir);
             var argsFile = Path.Combine(workingDir, "arguments.txt");
             try
             {
@@ -87,6 +88,39 @@ public class AirPlayService
         catch
         {
             return false;
+        }
+    }
+
+    private static void PrepareD3DCompiler(string workingDir)
+    {
+        var LocalDll = Directory.EnumerateFiles(workingDir, "d3dcompiler_47.dll", SearchOption.TopDirectoryOnly).FirstOrDefault();
+        if (LocalDll is null)
+        {
+            return;
+        }
+
+        var SystemDll = Path.Combine(Environment.SystemDirectory, "d3dcompiler_47.dll");
+        try
+        {
+            if (File.Exists(SystemDll))
+            {
+                File.Copy(SystemDll, LocalDll, true);
+            }
+            else
+            {
+                File.Delete(LocalDll);
+            }
+        }
+        catch
+        {
+            try
+            {
+                File.Delete(LocalDll);
+            }
+            catch
+            {
+                // The app can still try to start; Qt may fall back to another renderer.
+            }
         }
     }
 
